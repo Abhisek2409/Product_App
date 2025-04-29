@@ -36,12 +36,11 @@ class ApiService {
         'description': description,
       }),
     );
-
-    if (response.statusCode == 201) {
-      return Product.fromJson(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to add product');
-    }
+if (response.statusCode == 200 || response.statusCode == 201) {
+  return Product.fromJson(jsonDecode(response.body));
+} else {
+  throw Exception('Failed to add product');
+}
   }
 
   // Delete a product
